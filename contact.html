@@ -2,27 +2,55 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Contacto | Alexander</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contacto | Alexander Watson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
 
-    <img src="img/vaporeon.gif" class="corner top-left">
-    <img src="img/milotic-f.gif" class="corner top-right">
+    <img src="img/vaporeon.gif"  alt="" class="corner top-left">
+    <img src="img/milotic-f.gif" alt="" class="corner top-right">
 
-    <div class="center-panel">
-        <div class="dialog-box">
-            <p><strong>Contacto</strong></p>
-            <p>Email: tu-correo@ejemplo.com</p>
-            <p>LinkedIn: tu perfil</p>
-            <p>GitHub: alexanderwatson-code</p>
+    <main class="scene inner">
+        <div class="center-panel">
+
+            <div class="window">
+                <h1 class="window-title">Contacto</h1>
+                <ul class="contact-list">
+                    <li>
+                        <span class="label">Email</span>
+                        <a href="mailto:alexanderwh1703@gmail.com">alexanderwh1703@gmail.com</a>
+                    </li>
+                    <li>
+                        <span class="label">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/Alexander-Watson-H" target="_blank" rel="noopener">linkedin.com/in/Alexander-Watson-H</a>
+                    </li>
+                    <li>
+                        <span class="label">GitHub</span>
+                        <a href="https://github.com/alexanderwatson-code" target="_blank" rel="noopener">github.com/alexanderwatson-code</a>
+                    </li>
+                    <li>
+                        <span class="label">Ubicación</span>
+                        Lima, Perú
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dialog-box has-cursor">
+                <p data-type>Si buscas alguien para soporte TI o seguridad, escríbeme. Respondo rápido.</p>
+            </div>
+
+            <nav class="menu-buttons" aria-label="Navegación">
+                <a href="index.html" class="btn back">Inicio</a>
+                <a href="about.html" class="btn">Sobre mí</a>
+            </nav>
+
         </div>
+    </main>
 
-        <div class="menu-buttons">
-            <a href="index.html" class="btn">Inicio</a>
-        </div>
-    </div>
-
+    <script src="scripts/main.js"></script>
 </body>
 </html>
