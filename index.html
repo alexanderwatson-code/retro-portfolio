@@ -2,39 +2,42 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Alexander | Retro Pixel Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portafolio de Alexander Watson: soporte TI, ciberseguridad y redes, en estilo pixel art.">
+    <title>Alexander Watson | Portafolio pixel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
 
-    <!-- Escenario -->
-    <div class="scene">
+    <main class="scene">
 
-        <!-- Pokémon en el escenario -->
-        <img src="img/squirtle.gif" class="pkm squirtle">
-        <img src="img/vaporeon.gif" class="pkm vaporeon">
-        <img src="img/milotic-f.gif" class="pkm milotic">
-        <img src="img/pikachu.gif" class="pkm pikachu">
-        <img src="img/bulbasaur.gif" class="pkm bulbasaur">
-        <img src="img/charmander.gif" class="pkm charmander">
+        <img src="img/squirtle.gif"  alt="" class="pkm squirtle">
+        <img src="img/vaporeon.gif"  alt="" class="pkm vaporeon">
+        <img src="img/bulbasaur.gif" alt="" class="pkm bulbasaur">
+        <img src="img/charmander.gif" alt="" class="pkm charmander">
+        <img src="img/pikachu.gif"   alt="" class="pkm pikachu">
+        <img src="img/milotic-f.gif" alt="" class="pkm milotic">
 
-        <!-- Cuadro de diálogo -->
-        <div class="dialog-box">
-            <p>¡Hola! Soy <strong>Alexander</strong>.</p>
-            <p>Técnico TI, Redes, Ciberseguridad y Raspberry Pi.</p>
-            <p>Bienvenido a mi portafolio estilo Pokémon.</p>
+        <div class="dialog-box has-cursor">
+            <p data-type>¡Hola! Soy Alexander Watson.</p>
+            <p data-type>Soporte TI, redes y ciberseguridad. Me gusta dejar los sistemas funcionando y documentados.</p>
+            <p data-type>Elige una opción para seguir.</p>
         </div>
 
-        <!-- Menú -->
-        <div class="menu-buttons">
+        <nav class="menu-buttons" aria-label="Menú principal">
             <a href="about.html" class="btn">Sobre mí</a>
             <a href="projects.html" class="btn">Proyectos</a>
             <a href="certifications.html" class="btn">Certificaciones</a>
             <a href="contact.html" class="btn">Contacto</a>
-        </div>
+        </nav>
 
-    </div>
+        <p class="hint">Usa las flechas y Enter</p>
 
+    </main>
+
+    <script src="scripts/main.js"></script>
 </body>
 </html>
