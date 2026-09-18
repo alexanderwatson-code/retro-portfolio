@@ -2,29 +2,58 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Proyectos | Alexander</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proyectos | Alexander Watson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
 
-    <img src="img/rotom.gif" class="corner top-left">
-    <img src="img/metagross.gif" class="corner top-right">
-    <img src="img/magneton.gif" class="corner bottom-left">
-    <img src="img/blaziken-f.gif" class="corner bottom-right">
+    <img src="img/rotom.gif"     alt="" class="corner top-left">
+    <img src="img/metagross.gif" alt="" class="corner top-right">
+    <img src="img/magneton.gif"  alt="" class="corner bottom-left">
+    <img src="img/blaziken-f.gif" alt="" class="corner bottom-right">
 
-    <div class="center-panel">
-        <div class="dialog-box">
-            <p><strong>Proyectos</strong></p>
-            <p>• Raspberry Pi: sistemas de monitoreo y automatización.</p>
-            <p>• Redes: configuración Huawei/ZTE.</p>
-            <p>• Ciberseguridad: análisis de amenazas.</p>
+    <main class="scene inner">
+        <div class="center-panel">
+
+            <div class="window">
+                <h1 class="window-title">Proyectos</h1>
+                <ul class="entry-list">
+                    <li>
+                        <span class="tag">Raspberry Pi</span>
+                        Servidor casero con Linux para monitoreo de red y tareas automatizadas.
+                    </li>
+                    <li>
+                        <span class="tag">Redes</span>
+                        Cableado estructurado, ponchado RJ45 y configuración de equipos en laboratorio con Cisco Packet Tracer.
+                    </li>
+                    <li>
+                        <span class="tag">Ciberseguridad</span>
+                        Análisis de amenazas comunes: malware y phishing, con prácticas de respuesta a incidentes.
+                    </li>
+                    <li>
+                        <span class="tag">Datos</span>
+                        Depuración y segmentación de bases de datos, reportes de KPI y automatización de flujos operativos.
+                    </li>
+                    <li>
+                        <span class="tag">Web</span>
+                        Este portafolio: HTML, CSS y JavaScript a mano, sin frameworks.
+                    </li>
+                </ul>
+            </div>
+
+            <nav class="menu-buttons" aria-label="Navegación">
+                <a href="index.html" class="btn back">Inicio</a>
+                <a href="certifications.html" class="btn">Certificaciones</a>
+                <a href="contact.html" class="btn">Contacto</a>
+            </nav>
+
         </div>
+    </main>
 
-        <div class="menu-buttons">
-            <a href="index.html" class="btn">Inicio</a>
-        </div>
-    </div>
-
+    <script src="scripts/main.js"></script>
 </body>
 </html>
