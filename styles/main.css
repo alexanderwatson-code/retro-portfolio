@@ -94,8 +94,10 @@ body::before {
 /* Página interior: contenido centrado en vertical */
 .scene.inner { justify-content: center; }
 
-/* Franja de arena al pie */
-.scene::after {
+/* Franja de arena al pie.
+   Solo se dibuja si NO hay fondo propio. Tu img/background.png ya trae
+   playa y césped, asi que se activa unicamente con <body class="sin-fondo">. */
+body.sin-fondo .scene::after {
     content: "";
     position: absolute;
     left: 0;
@@ -121,12 +123,14 @@ body::before {
     filter: drop-shadow(0 4px 0 rgba(0,0,0,.18));
 }
 
-.squirtle   { bottom: 34px;  left: 3%; }
-.vaporeon   { bottom: 62px;  left: 17%; }
-.bulbasaur  { bottom: 30px;  left: 31%; }
-.charmander { bottom: 52px;  right: 30%; }
-.pikachu    { bottom: 28px;  right: 16%; }
-.milotic    { bottom: 68px;  right: 3%; }
+/* Alturas en % para que queden parados sobre el cesped de tu fondo.
+   Si flotan o se hunden, sube o baja solo estos valores. */
+.squirtle   { bottom: 11%; left: 4%; }
+.vaporeon   { bottom: 13%; left: 17%; }
+.bulbasaur  { bottom: 11%; left: 31%; }
+.charmander { bottom: 11%; right: 31%; }
+.pikachu    { bottom: 12%; right: 17%; }
+.milotic    { bottom: 13%; right: 4%; }
 
 /* Sprites en esquinas (páginas interiores) */
 .corner {
