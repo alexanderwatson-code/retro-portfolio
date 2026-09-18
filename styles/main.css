@@ -109,11 +109,11 @@ body::before {
 /* Alturas en % para que queden parados sobre el cesped de tu fondo.
    Si flotan o se hunden, sube o baja solo estos valores. */
 .squirtle   { bottom: 11%; left: 4%; }
-.gengar   { bottom: 13%; left: 17%; }
+.vaporeon   { bottom: 13%; left: 17%; }
 .bulbasaur  { bottom: 11%; left: 31%; }
 .charmander { bottom: 11%; right: 31%; }
 .pikachu    { bottom: 12%; right: 17%; }
-.lucario    { bottom: 13%; right: 4%; }
+.milotic    { bottom: 13%; right: 4%; }
 
 /* Sprites en esquinas (páginas interiores) */
 .corner {
@@ -132,7 +132,7 @@ body::before {
 
 /* Flotación suave: un solo gesto de movimiento en toda la página */
 .pkm, .corner { animation: float 3.2s steps(4, end) infinite; }
-.gengar, .pikachu, .top-right, .bottom-left { animation-delay: 1.6s; }
+.vaporeon, .pikachu, .top-right, .bottom-left { animation-delay: 1.6s; }
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -443,6 +443,141 @@ body::before {
 .contact-list a:focus-visible { color: var(--poke-red); }
 
 /* ============================================================
+   Cortina de transición entre páginas
+   ============================================================ */
+
+#page-wipe {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    pointer-events: none;
+}
+
+.wipe-half {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 52%;
+    background: #14141f;
+    background-image: repeating-linear-gradient(
+        45deg, rgba(255,255,255,.05) 0 4px, transparent 4px 8px);
+    transition: transform .36s steps(6, end);
+}
+
+.wipe-top    { top: 0;    transform-origin: top;    transform: scaleY(1); }
+.wipe-bottom { bottom: 0; transform-origin: bottom; transform: scaleY(1); }
+
+/* Estado por defecto: cerrada. El script la abre poco después de cargar.
+   Si JS está desactivado, el <noscript> de cada página oculta la cortina
+   entera para no dejar la pantalla en negro. */
+#page-wipe.is-open .wipe-top,
+#page-wipe.is-open .wipe-bottom { transform: scaleY(0); }
+
+/* ============================================================
+   Pantalla de encendido
+   ============================================================ */
+
+#boot-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity .35s ease;
+}
+
+#boot-screen.is-done {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.boot-blocks {
+    display: grid;
+    grid-template-columns: repeat(2, 34px);
+    grid-template-rows: repeat(2, 34px);
+    gap: 6px;
+    position: relative;
+}
+
+.blk { opacity: 0; }
+.blk-a { background: var(--poke-red); }
+.blk-b { background: var(--poke-blue); }
+.blk-c { background: var(--poke-yellow); }
+.blk-d { background: #3fae5a; }
+
+@keyframes blk-in-a { from { opacity: 0; transform: translate(-65vw, -65vh); } to { opacity: 1; transform: translate(0, 0); } }
+@keyframes blk-in-b { from { opacity: 0; transform: translate(65vw, -65vh);  } to { opacity: 1; transform: translate(0, 0); } }
+@keyframes blk-in-c { from { opacity: 0; transform: translate(-65vw, 65vh); } to { opacity: 1; transform: translate(0, 0); } }
+@keyframes blk-in-d { from { opacity: 0; transform: translate(65vw, 65vh);  } to { opacity: 1; transform: translate(0, 0); } }
+
+#boot-screen.is-playing .blk-a { animation: blk-in-a .5s steps(6, end) .15s forwards; }
+#boot-screen.is-playing .blk-b { animation: blk-in-b .5s steps(6, end) .30s forwards; }
+#boot-screen.is-playing .blk-c { animation: blk-in-c .5s steps(6, end) .45s forwards; }
+#boot-screen.is-playing .blk-d { animation: blk-in-d .5s steps(6, end) .60s forwards; }
+
+.boot-flash {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes boot-flash {
+    0%   { opacity: 0; }
+    45%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+#boot-screen.is-flashing .boot-flash {
+    animation: boot-flash .3s steps(2, end) forwards;
+}
+
+.boot-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #fff;
+    margin: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@keyframes boot-name-reveal { to { max-width: 17ch; } }
+
+#boot-screen.is-naming .boot-name {
+    animation: boot-name-reveal 1s steps(16, end) forwards;
+}
+
+.boot-prompt {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--poke-yellow);
+    margin: 0;
+    opacity: 0;
+}
+
+#boot-screen.is-ready .boot-prompt {
+    opacity: 1;
+    animation: blink 1s steps(1, end) infinite;
+}
+
+/* Si prefers-reduced-motion, saltamos directo al estado final: sin bloques
+   volando ni flash, solo el prompt para continuar. */
+@media (prefers-reduced-motion: reduce) {
+    .boot-blocks { display: none; }
+    .boot-name   { max-width: 17ch; }
+    #page-wipe   { display: none; }
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 
@@ -471,7 +606,7 @@ body::before {
     .top-right, .bottom-right   { right: 10px; }
 
     .pkm { width: 58px; }
-    .gengar, .lucario { display: none; }
+    .vaporeon, .milotic { display: none; }
 
     .contact-list .label { min-width: 100%; }
 }
