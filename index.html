@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Alexander | Retro Portfolio</title>
+
+    <!-- Fuente Pixel -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #1A1A2E;
+            color: #F7F7F7;
+            font-family: 'Press Start 2P', cursive;
+            padding: 40px;
+        }
+
+        .terminal {
+            background-color: #0F3460;
+            padding: 20px;
+            border: 3px solid #E94560;
+            width: 80%;
+            margin: auto;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .blink {
+            animation: blink-animation 1s steps(2, start) infinite;
+        }
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        .buttons {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px;
+            background-color: #E94560;
+            color: white;
+            text-decoration: none;
+            border: 3px solid #F7F7F7;
+        }
+
+        .btn:hover {
+            background-color: #F7F7F7;
+            color: #E94560;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="terminal">
+        > Loading portfolio... <br>
+        > Initializing network modules... <br>
+        > Boot sequence complete. <br><br>
+
+        Hola, soy <strong>Alexander</strong>. <br>
+        Técnico TI | Redes | Ciberseguridad | Raspberry Pi <br><br>
+
+        Bienvenido a mi portafolio estilo Pixel Art. <span class="blink">█</span>
+    </div>
+
+    <div class="buttons">
+        <a class="btn" href="#">CV PDF</a>
+        <a class="btn" href="#">LinkedIn</a>
+        <a class="btn" href="#">GitHub</a>
+        <a class="btn" href="#">Contacto</a>
+    </div>
+
+</body>
+</html>
