@@ -1,113 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Fondo Game Boy animado</title>
-  <style>
-    :root {
-      --gb-light: #9bbc0f;
-      --gb-dark: #0f380f;
-      --gb-mid:  #306230;
-    }
+<meta charset="UTF-8">
+<title>Pokémon Menu</title>
+<style>
+  body {
+    margin: 0;
+    background: #f8f8f8;
+    font-family: 'Press Start 2P', monospace;
+    overflow: hidden;
+  }
 
-    body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      background-color: var(--gb-light);
-    }
+  /* Contenedor principal */
+  .menu-box {
+    width: 320px;
+    height: 240px;
+    background: #ffffff;
+    border: 4px solid #000;
+    padding: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    /* Capa 1: grid tecnológico */
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(90deg, rgba(0,0,0,0.18) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(0,0,0,0.18) 1px, transparent 1px);
-      background-size: 16px 16px;
-      opacity: 0.35;
-      animation: grid-move 18s linear infinite;
-    }
+  /* Opciones estilo FireRed */
+  .option {
+    font-size: 14px;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+  }
 
-    /* Capa 2: bloques tipo circuito */
-    .bg-blocks {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(45deg, rgba(0,0,0,0.25) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.25) 75%, transparent 75%, transparent);
-      background-size: 48px 48px;
-      mix-blend-mode: multiply;
-      opacity: 0.45;
-      animation: blocks-move 30s linear infinite;
-    }
+  /* Cursor tipo flecha Pokémon */
+  .cursor {
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAPUlEQVQoz2NgQAN/Pz8z8P///wMxwMjIyPgPxGJgYGBg+A/EYmBgYGD4D8RiYGhgYH4D8RiYGBgYH4DAwMAAAAwGgX8pVORbAAAAABJRU5ErkJggg==') no-repeat;
+    background-size: cover;
+    visibility: hidden;
+  }
 
-    /* Capa 3: scanlines verticales suaves */
-    .bg-scanlines {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(180deg, rgba(0,0,0,0.25) 1px, transparent 3px);
-      background-size: 4px 4px;
-      opacity: 0.35;
-      animation: scanlines-move 4s linear infinite;
-      pointer-events: none;
-    }
-
-    /* Contenido centrado */
-    .content {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      color: var(--gb-dark);
-      font-family: "Press Start 2P", monospace;
-      text-shadow: 1px 1px var(--gb-mid);
-      letter-spacing: 2px;
-      text-align: center;
-    }
-
-    .content h1 {
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-
-    .content p {
-      font-size: 11px;
-      max-width: 420px;
-      line-height: 1.6;
-    }
-
-    /* Animaciones */
-    @keyframes grid-move {
-      0%   { transform: translate(0, 0); }
-      100% { transform: translate(-32px, -32px); }
-    }
-
-    @keyframes blocks-move {
-      0%   { transform: translate(0, 0); }
-      100% { transform: translate(64px, 32px); }
-    }
-
-    @keyframes scanlines-move {
-      0%   { background-position: 0 0; }
-      100% { background-position: 0 8px; }
-    }
-  </style>
+  .selected .cursor {
+    visibility: visible;
+  }
+</style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-blocks"></div>
-  <div class="bg-scanlines"></div>
 
-  <div class="content">
-    <h1>ALEXANDER WATSON</h1>
-    <p>
-      Ciberseguridad · Soporte TI · Datos<br>
-      Fondo retro · Game Boy · Pixel Tech
-    </p>
-  </div>
+<div class="menu-box">
+  <div class="option selected"><div class="cursor"></div>INICIO</div>
+  <div class="option"><div class="cursor"></div>PERFIL</div>
+  <div class="option"><div class="cursor"></div>EXPERIENCIA</div>
+  <div class="option"><div class="cursor"></div>CERTIFICACIONES</div>
+  <div class="option"><div class="cursor"></div>PROYECTOS</div>
+  <div class="option"><div class="cursor"></div>CONTACTO</div>
+</div>
+
+<script>
+  let index = 0;
+  const options = document.querySelectorAll('.option');
+
+  function updateSelection() {
+    options.forEach((opt, i) => {
+      opt.classList.toggle('selected', i === index);
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+      index = (index + 1) % options.length;
+      updateSelection();
+    }
+    if (e.key === 'ArrowUp') {
+      index = (index - 1 + options.length) % options.length;
+      updateSelection();
+    }
+  });
+</script>
+
 </body>
 </html>
