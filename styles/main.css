@@ -157,6 +157,7 @@ body::before {
 .dialog-box,
 .window {
     position: relative;
+    z-index: 2;
     width: 100%;
     max-width: 640px;
     background: var(--ui-bg);
