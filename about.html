@@ -2,26 +2,51 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Sobre mí | Alexander</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sobre mí | Alexander Watson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
 
-    <img src="img/porygon-z.gif" class="corner top-left">
-    <img src="img/alakazam-f.gif" class="corner top-right">
+    <img src="img/porygon-z.gif"  alt="" class="corner top-left">
+    <img src="img/alakazam-f.gif" alt="" class="corner top-right">
 
-    <div class="center-panel">
-        <div class="dialog-box">
-            <p><strong>Sobre mí</strong></p>
-            <p>Soy Alexander, técnico TI con experiencia en redes, ciberseguridad y Raspberry Pi.</p>
-            <p>Me gusta crear proyectos con estética retro y pixel art.</p>
+    <main class="scene inner">
+        <div class="center-panel">
+
+            <div class="trainer-card">
+                <div class="tc-head">
+                    <span>Tarjeta de entrenador</span>
+                    <span>ID 1703</span>
+                </div>
+                <div class="tc-rows">
+                    <div class="tc-row"><span>Nombre</span><span>Alexander Watson</span></div>
+                    <div class="tc-row"><span>Ciudad</span><span>Lima, Perú</span></div>
+                    <div class="tc-row"><span>Clase</span><span>Soporte TI / Ciberseguridad</span></div>
+                    <div class="tc-row"><span>Experiencia</span><span>4+ años</span></div>
+                    <div class="tc-row"><span>Medallas</span><span>5</span></div>
+                </div>
+            </div>
+
+            <div class="window">
+                <h1 class="window-title">Sobre mí</h1>
+                <p>Estudio Ciberseguridad en ISIL, con base técnica en desarrollo de software, diseño web, hardware y soporte TI.</p>
+                <p>Vengo de cuatro años trabajando con datos en entornos corporativos: depuración de bases, reportes, control de calidad de la información y automatización de procesos operativos.</p>
+                <p>Ahora apunto a mesa de ayuda, operaciones TI y análisis junior de seguridad. Y sí, monto todo lo que puedo con estética retro.</p>
+            </div>
+
+            <nav class="menu-buttons" aria-label="Navegación">
+                <a href="index.html" class="btn back">Inicio</a>
+                <a href="projects.html" class="btn">Proyectos</a>
+                <a href="contact.html" class="btn">Contacto</a>
+            </nav>
+
         </div>
+    </main>
 
-        <div class="menu-buttons">
-            <a href="index.html" class="btn">Inicio</a>
-        </div>
-    </div>
-
+    <script src="scripts/main.js"></script>
 </body>
 </html>
