@@ -109,11 +109,11 @@ body::before {
 /* Alturas en % para que queden parados sobre el cesped de tu fondo.
    Si flotan o se hunden, sube o baja solo estos valores. */
 .squirtle   { bottom: 11%; left: 4%; }
-.vaporeon   { bottom: 13%; left: 17%; }
+.gengar   { bottom: 13%; left: 17%; }
 .bulbasaur  { bottom: 11%; left: 31%; }
 .charmander { bottom: 11%; right: 31%; }
 .pikachu    { bottom: 12%; right: 17%; }
-.milotic    { bottom: 13%; right: 4%; }
+.lucario    { bottom: 13%; right: 4%; }
 
 /* Sprites en esquinas (páginas interiores) */
 .corner {
@@ -132,7 +132,7 @@ body::before {
 
 /* Flotación suave: un solo gesto de movimiento en toda la página */
 .pkm, .corner { animation: float 3.2s steps(4, end) infinite; }
-.vaporeon, .pikachu, .top-right, .bottom-left { animation-delay: 1.6s; }
+.gengar, .pikachu, .top-right, .bottom-left { animation-delay: 1.6s; }
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -471,7 +471,7 @@ body::before {
     .top-right, .bottom-right   { right: 10px; }
 
     .pkm { width: 58px; }
-    .vaporeon, .milotic { display: none; }
+    .gengar, .lucario { display: none; }
 
     .contact-list .label { min-width: 100%; }
 }
