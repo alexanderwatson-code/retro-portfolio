@@ -463,6 +463,13 @@ body::before {
     background-image: repeating-linear-gradient(
         45deg, rgba(255,255,255,.05) 0 4px, transparent 4px 8px);
     transition: transform .36s steps(6, end);
+    /* Misma red de seguridad: si main.js no carga, la cortina se abre
+       sola a los 2.5s en vez de dejar la página tapada para siempre. */
+    animation: wipe-fallback-open .4s steps(1, end) 2.5s forwards;
+}
+
+@keyframes wipe-fallback-open {
+    to { transform: scaleY(0); }
 }
 
 .wipe-top    { top: 0;    transform-origin: top;    transform: scaleY(1); }
@@ -491,11 +498,24 @@ body::before {
     overflow: hidden;
     opacity: 1;
     transition: opacity .35s ease;
+    /* Red de seguridad: si JavaScript no llega a correr (falló la carga
+       de main.js, conexión lenta, etc.), esta animación por sí sola
+       desvanece la pantalla a los 7s y deja de bloquear los clics, para
+       que el sitio nunca quede trabado en negro. En cuanto JS confirma
+       que sí está corriendo (agrega .is-playing casi de inmediato),
+       esta animación se cancela y el control pasa al script normal. */
+    animation: boot-fallback-reveal 7s steps(1, end) forwards;
 }
 
+@keyframes boot-fallback-reveal {
+    0%, 92% { opacity: 1; pointer-events: auto; }
+    100%    { opacity: 0; pointer-events: none; }
+}
+
+#boot-screen.is-playing,
+#boot-screen.is-ready,
 #boot-screen.is-done {
-    opacity: 0;
-    pointer-events: none;
+    animation: none;
 }
 
 .boot-blocks {
