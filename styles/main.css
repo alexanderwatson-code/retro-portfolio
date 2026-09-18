@@ -176,7 +176,7 @@ body::before {
 .dialog-box p,
 .window p {
     margin: 0 0 10px;
-    font-size: 22px;
+    font-size: clamp(17px, 4.4vw, 22px);
     line-height: 1.45;
 }
 
@@ -221,7 +221,7 @@ body::before {
 }
 
 .entry-list li {
-    font-size: 21px;
+    font-size: clamp(16px, 4.2vw, 21px);
     line-height: 1.5;
     padding: 10px 12px 10px 30px;
     position: relative;
@@ -282,7 +282,7 @@ body::before {
     display: flex;
     justify-content: space-between;
     gap: 14px;
-    font-size: 21px;
+    font-size: clamp(16px, 4.2vw, 21px);
     line-height: 1.6;
     padding: 4px 0;
 }
@@ -418,7 +418,7 @@ body::before {
     flex-wrap: wrap;
     align-items: baseline;
     gap: 10px;
-    font-size: 21px;
+    font-size: clamp(16px, 4.2vw, 21px);
     line-height: 1.6;
     padding: 10px 0;
     border-bottom: 2px dashed var(--ui-line-lt);
@@ -562,7 +562,7 @@ body::before {
 
 .boot-name {
     font-family: 'Press Start 2P', monospace;
-    font-size: 13px;
+    font-size: clamp(11px, 3.4vw, 13px);
     letter-spacing: 3px;
     color: #fff;
     margin: 0;
@@ -571,7 +571,7 @@ body::before {
     white-space: nowrap;
 }
 
-@keyframes boot-name-reveal { to { max-width: 17ch; } }
+@keyframes boot-name-reveal { to { max-width: min(280px, 82vw); } }
 
 #boot-screen.is-naming .boot-name {
     animation: boot-name-reveal 1s steps(16, end) forwards;
@@ -594,7 +594,7 @@ body::before {
    volando ni flash, solo el prompt para continuar. */
 @media (prefers-reduced-motion: reduce) {
     .boot-blocks { display: none; }
-    .boot-name   { max-width: 17ch; }
+    .boot-name   { max-width: min(280px, 82vw); }
     #page-wipe   { display: none; }
 }
 
@@ -611,25 +611,46 @@ body::before {
 @media (max-width: 560px) {
     :root { --px: 3px; }
 
-    .scene { padding: 16px 12px 20px; gap: 14px; }
+    .scene { padding: 20px 14px 26px; gap: 18px; }
 
-    .dialog-box, .window { padding: 16px 16px; }
-    .dialog-box p, .window p,
-    .entry-list li, .tc-row, .contact-list li { font-size: 19px; }
+    .dialog-box, .window { padding: 18px 18px; }
 
     .window-title { font-size: 10px; }
-    .btn { font-size: 9px; padding: 10px 12px 10px 22px; }
 
-    .corner { width: 48px; }
-    .top-left, .top-right       { top: 10px; }
-    .bottom-left, .bottom-right { bottom: 10px; }
-    .top-left, .bottom-left     { left: 10px; }
-    .top-right, .bottom-right   { right: 10px; }
+    /* Menú vertical de lista completa: más fácil de tocar y menos
+       amontonado que los botones en fila envolvente. */
+    .menu-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 340px;
+        gap: 10px;
+    }
 
-    .pkm { width: 58px; }
+    .btn {
+        width: 100%;
+        text-align: left;
+        font-size: 11px;
+        padding: 15px 16px 15px 32px;
+    }
+
+    .btn::before { left: 12px; }
+
+    .corner { width: 44px; }
+    .top-left, .top-right       { top: 8px; }
+    .bottom-left, .bottom-right { bottom: 8px; }
+    .top-left, .bottom-left     { left: 8px; }
+    .top-right, .bottom-right   { right: 8px; }
+
+    .pkm { width: 54px; }
     .vaporeon, .milotic { display: none; }
 
     .contact-list .label { min-width: 100%; }
+}
+
+/* Pantallas muy angostas: los sprites de esquina ya no caben sin pisar
+   el contenido, mejor ocultarlos y dejar que el cuadro respire. */
+@media (max-width: 380px) {
+    .corner { display: none; }
 }
 
 /* Accesibilidad */
