@@ -1,116 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Alexander | Retro Pixel Portfolio</title>
+  <meta charset="UTF-8">
+  <title>Fondo Game Boy animado</title>
+  <style>
+    :root {
+      --gb-light: #9bbc0f;
+      --gb-dark: #0f380f;
+      --gb-mid:  #306230;
+    }
 
-    <!-- Fuente estilo Game Boy -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: var(--gb-light);
+    }
 
-    <style>
-        body {
-            background-color: #98D8C8; /* Verde menta tipo Game Boy */
-            font-family: 'Press Start 2P', cursive;
-            margin: 0;
-            padding: 0;
-            color: #2C2C2C;
-        }
+    /* Capa 1: grid tecnológico */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,0.18) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0,0,0,0.18) 1px, transparent 1px);
+      background-size: 16px 16px;
+      opacity: 0.35;
+      animation: grid-move 18s linear infinite;
+    }
 
-        .container {
-            width: 90%;
-            margin: auto;
-            padding-top: 40px;
-            text-align: center;
-        }
+    /* Capa 2: bloques tipo circuito */
+    .bg-blocks {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(45deg, rgba(0,0,0,0.25) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.25) 75%, transparent 75%, transparent);
+      background-size: 48px 48px;
+      mix-blend-mode: multiply;
+      opacity: 0.45;
+      animation: blocks-move 30s linear infinite;
+    }
 
-        .panel {
-            background-color: #F8F8F8;
-            border: 4px solid #2C2C2C;
-            padding: 20px;
-            margin: auto;
-            width: 85%;
-            box-shadow: 0px 0px 0px 6px #2C2C2C;
-        }
+    /* Capa 3: scanlines verticales suaves */
+    .bg-scanlines {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.25) 1px, transparent 3px);
+      background-size: 4px 4px;
+      opacity: 0.35;
+      animation: scanlines-move 4s linear infinite;
+      pointer-events: none;
+    }
 
-        .title {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+    /* Contenido centrado */
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: var(--gb-dark);
+      font-family: "Press Start 2P", monospace;
+      text-shadow: 1px 1px var(--gb-mid);
+      letter-spacing: 2px;
+      text-align: center;
+    }
 
-        .sprite {
-            width: 120px;
-            height: 120px;
-            background-color: #C4C4C4;
-            border: 4px solid #2C2C2C;
-            margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .content h1 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
 
-        .buttons {
-            margin-top: 30px;
-        }
+    .content p {
+      font-size: 11px;
+      max-width: 420px;
+      line-height: 1.6;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 20px;
-            margin: 10px;
-            background-color: #FFCB05; /* Amarillo estilo Poké */
-            color: #2C2C2C;
-            text-decoration: none;
-            border: 4px solid #2C2C2C;
-            box-shadow: 0px 0px 0px 4px #2C2C2C;
-        }
+    /* Animaciones */
+    @keyframes grid-move {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(-32px, -32px); }
+    }
 
-        .btn:hover {
-            background-color: #2C2C2C;
-            color: #FFCB05;
-        }
+    @keyframes blocks-move {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(64px, 32px); }
+    }
 
-        .dialog-box {
-            background-color: #FFFFFF;
-            border: 4px solid #2C2C2C;
-            padding: 20px;
-            margin-top: 30px;
-            width: 85%;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0px 0px 0px 6px #2C2C2C;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-    </style>
+    @keyframes scanlines-move {
+      0%   { background-position: 0 0; }
+      100% { background-position: 0 8px; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="bg-grid"></div>
+  <div class="bg-blocks"></div>
+  <div class="bg-scanlines"></div>
 
-    <div class="container">
-
-        <div class="panel">
-            <div class="title">Bienvenido al Mundo Pixel</div>
-
-            <div class="sprite">
-                <!-- Aquí luego puedes poner tu avatar pixel art -->
-                <span>Avatar</span>
-            </div>
-
-            <div class="dialog-box">
-                ¡Hola! Soy <strong>Alexander</strong>.  
-                Técnico TI, Redes, Ciberseguridad y Raspberry Pi.  
-                Este es mi portafolio estilo Pixel Art inspirado en RPG retro.  
-                Explora mis proyectos, certificaciones y aventuras tecnológicas.
-            </div>
-
-            <div class="buttons">
-                <a class="btn" href="#">CV PDF</a>
-                <a class="btn" href="#">LinkedIn</a>
-                <a class="btn" href="#">GitHub</a>
-                <a class="btn" href="#">Contacto</a>
-            </div>
-        </div>
-
-    </div>
-
+  <div class="content">
+    <h1>ALEXANDER WATSON</h1>
+    <p>
+      Ciberseguridad · Soporte TI · Datos<br>
+      Fondo retro · Game Boy · Pixel Tech
+    </p>
+  </div>
 </body>
 </html>
